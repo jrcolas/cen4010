@@ -1,0 +1,47 @@
+// MainActivity.java Code
+
+package com.jrcolas.enrollifier; // The package name will be different for you. 
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        // Main interface area
+        final String url = "http://cen4010.jrcolas.com/app";
+        final WebView webView = (WebView) this.findViewById(R.id.firstWebView);
+        webView.setWebViewClient(new WebViewClient());
+        webView.getSettings().setJavaScriptEnabled(true);
+        webView.setVerticalScrollBarEnabled(false);
+        webView.setHorizontalScrollBarEnabled(false);
+        webView.loadUrl(url);
+
+        // Refresh timer
+        Timer repeatTask = new Timer();
+        repeatTask.scheduleAtFixedRate(new TimerTask() {
+
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        webView.loadUrl(url);
+                    }
+                });
+            }
+        }, 0, 5000);
+    }
+
+
+}
