@@ -1,0 +1,3 @@
+Go to http://cen4010.jrcolas.com/app.
+
+All the login information are there to test out whatever we have so far.
