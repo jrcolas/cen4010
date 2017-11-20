@@ -58,7 +58,33 @@
 	// Listing courses in shopping cart for specific student.
 ?>
 
+
+<style>
+	/*CSS elements */
+
+
+		table{
+			border-collapse: collapse;
+			width: 100%;
+		}
+		th, td{
+			text-align: left;
+			padding: 8px;
+		}
+		tr:nth-child(even){
+			background-color: #0b1dc0;
+			color: #ffffff;
+		}
+		tr:nth-child(odd){
+			background-color: #daa520;
+		}
+	</style>
+
+
 <table>
+
+
+
 	<tr>
 		<th>Course ID</th>
 		<th>Course Name</th>
