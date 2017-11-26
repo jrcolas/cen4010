@@ -33,23 +33,60 @@
 		<title>My Account</title>
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
 		<script type="text/javascript">
-			$(document).ready(function(){ /* PREPARE THE SCRIPT */
-	    	$("#enroll").change(function(){ /* WHEN YOU CHANGE AND SELECT FROM THE SELECT FIELD */
-	      		var enroll = $(this).val(); /* GET THE VALUE OF THE SELECTED DATA */
-	      		var dataString = "enroll="+enroll; /* STORE THAT TO A DATA STRING */
+			// Push Notification & Refresh Timer ----------------------------------------------
+			function showAndroidToast(toast) {
+		        Android.showToast(toast);
+		    }
 
-	      	$.ajax({ /* THEN THE AJAX CALL */
-		        type: "POST", /* TYPE OF METHOD TO USE TO PASS THE DATA */
-		        url: "get-data.php", /* PAGE WHERE WE WILL PASS THE DATA */
-		        data: dataString, /* THE DATA WE WILL BE PASSING */
-		        success: function(result){ /* GET THE TO BE RETURNED DATA */
-		          $("#show").html(result); /* THE RETURNED DATA WILL BE SHOWN IN THIS DIV */
-		        }
-	      	});
+			$(document).ready(function() {
+				var currenthtml;
+				var latesthtml;
 
-		    });
-		  });
+				$.get(window.location.href, function(data) {
+					currenthtml = data;
+					latesthtml = data;
+				});
+
+				setInterval(function() {
+					$.get(window.location.href, function(data) {
+						latesthtml = data;
+					});
+
+					if(currenthtml != latesthtml) {
+						alert("There is posibbly a change on the page."); // Web Browser Alert
+						showAndroidToast("Enrollifier"); // Android Push Notification
+					}
+				}, 15000);
+
+			});
+			// Push Notification & Refresh Timer End ------------------------------------------
 		</script>
+
+		<style>
+	/*CSS elements */
+			body, a:link, a:visited {
+				background-color: #2c3338;
+				color: #fffffe;
+			}
+			table{
+				border-collapse: collapse;
+				width: 100%;
+			}
+			th, td{
+				text-align: left;
+				padding: 8px;
+			}
+			tr:nth-child(even), a:link{
+				background-color: #0b1dc0;
+				color: #ffffff;
+			}
+			tr:nth-child(odd), a:link{
+				background-color: #daa520;
+				color: #000000;
+			}
+
+		</style>
+
 	</head>
 <h1>Welcome <?php echo $studentName ?>!</h1><br>
 <h2>Shopping Cart</h2>
@@ -59,31 +96,7 @@
 ?>
 
 
-<style>
-	/*CSS elements */
-
-
-		table{
-			border-collapse: collapse;
-			width: 100%;
-		}
-		th, td{
-			text-align: left;
-			padding: 8px;
-		}
-		tr:nth-child(even){
-			background-color: #0b1dc0;
-			color: #ffffff;
-		}
-		tr:nth-child(odd){
-			background-color: #daa520;
-		}
-	</style>
-
-
 <table>
-
-
 
 	<tr>
 		<th>Course ID</th>
