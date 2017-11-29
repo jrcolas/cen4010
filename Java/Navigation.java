@@ -38,7 +38,7 @@ public class Navigation extends MainActivity {
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View contentView = inflater.inflate(R.layout.activity_settings, null, false);
 
-        mDrawerLayout.addView(contentView, 0);
+        //mDrawerLayout.addView(contentView, 0);
 /*
         // Main interface area
         final String url = "http://cen4010.jrcolas.com/app/notif.html";

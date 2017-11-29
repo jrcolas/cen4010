@@ -40,9 +40,10 @@ public class Test2 extends MainActivity {
         super.onCreate(savedInstanceState);
         LayoutInflater inflater = (LayoutInflater) this
                 .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View contentView = inflater.inflate(R.layout.activity_test2, null, false);
+                setContentView(R.layout.activity_test2);
+        //View contentView = inflater.inflate(R.layout.activity_test2, null, false);
 
-        mDrawerLayout.addView(contentView, 0);
+        //mDrawerLayout.addView(contentView, 0);
 
         // Main interface area
         //final String url2 = "http://cen4010.jrcolas.com/app/login.php";

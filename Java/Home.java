@@ -37,11 +37,8 @@ public class Home extends MainActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LayoutInflater inflater = (LayoutInflater) this
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View contentView = inflater.inflate(R.layout.activity_home, null, false);
+                setContentView(R.layout.activity_home);
 
-        mDrawerLayout.addView(contentView, 0);
 
         // Main interface area
         final String url = "http://cen4010.jrcolas.com/app/login.php";

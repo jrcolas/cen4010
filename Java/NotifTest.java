@@ -36,11 +36,9 @@ public class NotifTest extends MainActivity implements View.OnClickListener {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        LayoutInflater inflater = (LayoutInflater) this
-                .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View contentView = inflater.inflate(R.layout.activity_notif_test, null, false);
+        setContentView(R.layout.activity_notif_test);
 
-        mDrawerLayout.addView(contentView, 0);
+        //mDrawerLayout.addView(contentView, 0);
 
         //--------------------------------------------
         // Single button notification
