@@ -40,7 +40,7 @@ public class Home extends MainActivity {
                 setContentView(R.layout.activity_home);
 
 
-        // Main interface area
+        // WebView
         final String url = "http://cen4010.jrcolas.com/app/login.php";
         //final String url = "https://m.fiu.edu/myfiu/student.php?action=viewCart";
         webView = (WebView) this.findViewById(R.id.firstWebView);
@@ -62,6 +62,7 @@ public class Home extends MainActivity {
         // END Javascript Injection Part 1 ---------------------------------------------------------------------------------------
 
         webView.loadUrl(url);
+        // END WebView
     }
 
     // Javascript Injection Part 2 ------------------------------------------------------------------------------------------
